@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<CardView:CardView xmlns="http://xamarin.com/schemas/2014/forms"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:CardView="clr-namespace:CardView;assembly=CardView"
+                   xmlns:Cards="clr-namespace:Blank1.Controls.Cards;assembly=BlankApp1"
+                   xmlns:Models="clr-namespace:Blank1.Models;assembly=BlankApp1"
+                   x:Class="Blank1.Controls.Cards.CardTemplate"
+                   x:DataType="Cards:CardTemplate"
+                   Padding="0"
+                   BackgroundColor="BurlyWood">
+   <CardView:CardView.CardViewContent>
+      <StackLayout HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   BackgroundColor="Beige">
+         <BoxView HorizontalOptions="FillAndExpand"
+                  VerticalOptions="Start"
+                  BackgroundColor="Brown" />
+
+         <CarouselView ItemsSource="{ Binding Source={ RelativeSource AncestorType={ x:Type Cards:CardTemplate } }, Path=Descriptions }">
+            <CarouselView.ItemTemplate>
+               <DataTemplate x:Name="x_cardItemsDescriptionTemplate">
+                  <StackLayout Spacing="5"
+                               Orientation="Horizontal">
+
+                     <Label VerticalOptions="Center"
+                            Text="{ Binding Source={ RelativeSource AncestorType={ x:Type Models:CardDescription } }, Path=Text }"
+                            TextColor="Black"
+                            FontSize="12" />
+                  </StackLayout>
+               </DataTemplate>
+            </CarouselView.ItemTemplate>
+         </CarouselView>
+      </StackLayout>
+   </CardView:CardView.CardViewContent>
+</CardView:CardView>

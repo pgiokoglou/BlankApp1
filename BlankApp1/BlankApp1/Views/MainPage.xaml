@@ -1,0 +1,41 @@
+﻿<?xml version = "1.0" encoding = "utf-8"?>
+
+<ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Cards = "clr-namespace:Blank1.Controls.Cards;assembly=BlankApp1"
+             xmlns:Converters = "clr-namespace:Blank1.Helpers.Converters;assembly=BlankApp1"
+             xmlns:Models = "clr-namespace:Blank1.Models;assembly=BlankApp1"
+             xmlns:ViewModels = "clr-namespace:BlankApp1.ViewModels;assembly=BlankApp1"
+             x:Class = "BlankApp1.Views.MainPage"
+             Title = "{ Binding Title }"
+             x:DataType = "ViewModels:MainPageViewModel">
+   <ContentPage.Resources>
+      <ResourceDictionary>
+         <Converters:ConcatenateConverter x:Key = "ConcatenateConverter"/>
+
+         
+
+      </ResourceDictionary>
+   </ContentPage.Resources>
+
+<StackLayout HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand">
+   <CarouselView ItemsSource = "{Binding GroupsItems}">
+      <CarouselView.ItemTemplate >
+         <DataTemplate >
+            <Cards:CardTemplate x:DataType = "Models:Group"
+                                Title = "{ Binding Path=Title }">
+
+               <!--<Label TextColor = "Black" Text ="{Binding Path=ItemsQuantity}"/>-->
+
+               <Cards:CardTemplate.Descriptions>
+                  <Models:CardDescription Text="{Binding Path=ItemsQuantity}"/>
+               </Cards:CardTemplate.Descriptions>
+            </Cards:CardTemplate>
+         </DataTemplate>
+      </CarouselView.ItemTemplate>
+   </CarouselView>
+   <BoxView HorizontalOptions="StartAndExpand"
+            VerticalOptions="EndAndExpand"/>
+   </StackLayout>
+</ContentPage>
